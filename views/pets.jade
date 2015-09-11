@@ -1,6 +1,26 @@
 extends layout
 
 block content
-		h1= title
-		p welcome to #{title}
-		p pets available: #{pets}
+		h1 Welcome to #{title}
+		form(name="add-pet", method="post")
+			div.input
+				span.label Name 
+				input(type="text", name="name")
+			div.input
+				span.label  Species  
+				input(type="text", name="species")
+			div.input
+				span.label Image 
+				input(type="text", name="image")
+				input(type="submit", value="add")
+		table
+			each row in rows
+				tr
+					each col in row
+						td
+							div
+								img(src=col.image width=200 height=200)
+								p Name: #{col.name}
+								p Species: #{col.species}
+block footer
+	h4 Contact us at (xxx) xxx-xxxx
